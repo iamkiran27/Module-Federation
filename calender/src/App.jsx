@@ -1,14 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Calender from "./components/Calendar";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 import "./index.css";
 
 const App = () => (
-  <div className="container">
-    <div>Name: calender</div>
-    <div>Framework: react</div>
-    <div>Language: JavaScript</div>
-    <div>CSS: Empty CSS</div>
+  <div>
+    <ErrorBoundary>
+      <Calender />
+    </ErrorBoundary>
   </div>
 );
 ReactDOM.render(<App />, document.getElementById("app"));
