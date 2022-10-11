@@ -1,14 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
+import Cart from "./components/cart";
 import "./index.css";
 
 const App = () => (
   <div className="container">
-    <div>Name: cart</div>
-    <div>Framework: react</div>
-    <div>Language: JavaScript</div>
-    <div>CSS: Empty CSS</div>
+    <Cart/>
   </div>
 );
 ReactDOM.render(<App />, document.getElementById("app"));
