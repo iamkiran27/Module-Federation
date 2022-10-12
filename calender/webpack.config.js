@@ -44,7 +44,10 @@ module.exports = {
       name: "calender",
       filename: "remoteEntry.js",
       remotes: {},
-      exposes: {},
+      exposes: {
+        './routes': './src/routes',
+        './CalenderApp': './src/bootstrap',
+      },
       shared: {
         ...deps,
         react: {
