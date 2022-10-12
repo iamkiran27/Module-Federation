@@ -44,8 +44,9 @@ module.exports = {
       name: "container",
       filename: "remoteEntry.js",
       remotes: {
-        calender: 'calender@http://localhost:9004/remoteEntry.js',
-        pdp:'pdp@http://localhost:9002/remoteEntry.js'
+        calender: "calender@http://localhost:9004/remoteEntry.js",
+        home: "home@http://localhost:9001/remoteEntry.js",
+        pdp: "pdp@http://localhost:9002/remoteEntry.js",
       },
       exposes: {},
       shared: {
