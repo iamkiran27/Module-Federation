@@ -5,11 +5,13 @@ import ErrorBoundary from "./components/ErrorBoundary";
 
 import "./index.css";
 
-const App = () => (
+export const App = () => (
   <div>
     <ErrorBoundary>
       <Calender />
     </ErrorBoundary>
   </div>
 );
-ReactDOM.render(<App />, document.getElementById("app"));
+
+export default App;
+// ReactDOM.render(<App />, document.getElementById("app"));

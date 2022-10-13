@@ -44,7 +44,9 @@ module.exports = {
       name: "pdp",
       filename: "remoteEntry.js",
       remotes: {},
-      exposes: {},
+      exposes: {
+        './PdpApp': './src/bootstrap',
+      },
       shared: {
         ...deps,
         react: {

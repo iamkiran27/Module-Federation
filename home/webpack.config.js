@@ -44,7 +44,7 @@ module.exports = {
       name: "home",
       filename: "remoteEntry.js",
       remotes: {},
-      exposes: {},
+      exposes: { "./home": "./src/bootstrap.js" },
       shared: {
         ...deps,
         react: {

@@ -19,30 +19,30 @@ const Cart = () => {
   const [sum, setSum] = useState(0);
   const [qty, setQty] = useState({});
 
-  useEffect(() => {
-    Object.keys(cartItems).map(async (key) => {
-      const it = (await axios.get(`http://localhost:8080/products/${key}`))
-        .data;
-      setProducts((prev) => [...prev, { ...it }]);
-      setQty((prev) => ({ ...prev, [key]: cartItems[key] }));
-      if (!localStorage.getItem("price")) {
-        localStorage.setItem("price", JSON.stringify({ [key]: it.price }));
-      } else {
-        const pr = JSON.parse(localStorage.getItem("price"));
-        pr[key] = it.price;
-        localStorage.setItem("price", JSON.stringify(pr));
-      }
-      console.log("key: " + qty[key]);
-      console.log(it.price);
-    });
-  }, []);
-  useEffect(() => {
-    setSum(0);
-    const prices = JSON.parse(localStorage.getItem("price"));
-    Object.keys(qty).map((key) => {
-      setSum((prev) => prev + prices[key] * qty[key]);
-    });
-  }, [qty]);
+  // useEffect(() => {
+  //   Object.keys(cartItems).map(async (key) => {
+  //     const it = (await axios.get(`http://localhost:8080/products/${key}`))
+  //       .data;
+  //     setProducts((prev) => [...prev, { ...it }]);
+  //     setQty((prev) => ({ ...prev, [key]: cartItems[key] }));
+  //     if (!localStorage.getItem("price")) {
+  //       localStorage.setItem("price", JSON.stringify({ [key]: it.price }));
+  //     } else {
+  //       const pr = JSON.parse(localStorage.getItem("price"));
+  //       pr[key] = it.price;
+  //       localStorage.setItem("price", JSON.stringify(pr));
+  //     }
+  //     console.log("key: " + qty[key]);
+  //     console.log(it.price);
+  //   });
+  // }, []);
+  // useEffect(() => {
+  //   setSum(0);
+  //   const prices = JSON.parse(localStorage.getItem("price"));
+  //   Object.keys(qty).map((key) => {
+  //     setSum((prev) => prev + prices[key] * qty[key]);
+  //   });
+  // }, [qty]);
   const handle = () => {
     setSum(0);
     const prices = JSON.parse(localStorage.getItem("price"));
@@ -78,15 +78,16 @@ const Cart = () => {
                     </Grid>
                     <Grid item margin={1}>
                       <Grid container direction="column">
-                      <a
-                            href={`/pdp/${value.id}`}
-                            onClick={navigateToUrl}
-                            style={{
-                              textDecoration: "none",
-                              color: "black",
-                            }}
-                          ><Typography>{value.name}</Typography>
-                          </a>
+                        <a
+                          href={`/pdp/${value.id}`}
+                          onClick={navigateToUrl}
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                          }}
+                        >
+                          <Typography>{value.name}</Typography>
+                        </a>
                         <Typography
                           marginY={2}
                           fontWeight="bold"
