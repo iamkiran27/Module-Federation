@@ -44,7 +44,9 @@ module.exports = {
       name: "cart",
       filename: "remoteEntry.js",
       remotes: {},
-      exposes: {},
+      exposes: {
+        "./CartApp": "./src/bootstrap",
+      },
       shared: {
         ...deps,
         react: {

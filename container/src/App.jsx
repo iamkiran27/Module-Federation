@@ -1,38 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Container from "./Container";
-import { HashRouter, Route, Switch } from "react-router-dom";
 import remoteRoutes from "calender/routes";
 import "./index.css";
 import CalenderApp from "./components/CalenderApp";
-import PdpApp from "./components/PdpApp";
 import Home from "./components/Home";
 const routes = [...remoteRoutes];
-
+import { StyledEngineProvider } from "@mui/material";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Cart from "./components/Cart";
 const App = () => (
-  <div className="container">
-    <Container />
-
-    <HashRouter>
-      <div>
-        <Home />
-        <CalenderApp />
-        <PdpApp />
-
-        {/* <React.Suspense fallback={<div>Loading...</div>}>
-          <Switch>
-            {routes.map((route) => (
-              <Route
-                key={route.path}
-                path={route.path}
-                component={route.component}
-                exact={route.exact}
-              />
-            ))}
-          </Switch>
-        </React.Suspense> */}
-      </div>
-    </HashRouter>
+  <div>
+    <Router>
+      <Container />
+      <Routes>
+        <Route exact path="/calender" element={<CalenderApp />}></Route>
+        <Route exact path="/cart" element={<Cart />} />
+        <Route exact path="/" element={<Home />}></Route>
+      </Routes>
+    </Router>
   </div>
 );
 

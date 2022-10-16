@@ -1,18 +1,17 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import "./index.css";
 import { useState, useEffect } from "react";
-import { Box, Grid, Typography, Button,Rating } from "@mui/material";
+import { Box, Grid, Typography, Button, Rating } from "@mui/material";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import axios from "axios";
 import { Observable } from "windowed-observable";
 // import StarRateIcon from '@mui/icons-material/StarRate';
-const App=()=>{
+const App = () => {
   const [prod, setprod] = useState({});
   const observable = new Observable("cart");
   useEffect(() => {
     let id = window.location.pathname.split("/")[2];
-    if(id==undefined) id=1;
+    if (id == undefined) id = 1;
 
     axios
       .get(`http://localhost:8080/products/${id}`)
@@ -40,7 +39,7 @@ const App=()=>{
 
             const data = JSON.parse(localStorage.getItem("cart"));
             data[resp.data.id] = updatedQuantity;
-            observable.publish(Object.keys(data).length)
+            observable.publish(Object.keys(data).length);
             localStorage.setItem("cart", JSON.stringify(data));
           })
           .catch((error) => {
@@ -64,7 +63,7 @@ const App=()=>{
               data[resp.data.id] = 1;
               localStorage.setItem("cart", JSON.stringify(data));
             }
-            observable.publish(Object.keys(data).length)
+            observable.publish(Object.keys(data).length);
           });
       });
   };
@@ -120,11 +119,24 @@ const App=()=>{
           <Typography variant="h4" sx={{ pt: 3, pb: 5, color: "#00001a" }}>
             {prod.name}
           </Typography>
-          <Grid item sx={{ pb: 3, display: "flex", color: "#00004d",alignItems:'center' }}>
-            <Typography variant="h6" sx={{ pt: -6,pr:1 }}>
-              Rating: 
+          <Grid
+            item
+            sx={{
+              pb: 3,
+              display: "flex",
+              color: "#00004d",
+              alignItems: "center",
+            }}
+          >
+            <Typography variant="h6" sx={{ pt: -6, pr: 1 }}>
+              Rating:
             </Typography>
-            <Rating name="read-only" readOnly value={prod.rating ?? 0} precision={0.5} />
+            <Rating
+              name="read-only"
+              readOnly
+              value={prod.rating ?? 0}
+              precision={0.5}
+            />
             {/* <Box
               sx={{
                 borderRadious: "8px",
@@ -205,7 +217,7 @@ const App=()=>{
       </Grid>
     </div>
   );
-}
+};
 
 export default App;
 

@@ -46,7 +46,7 @@ module.exports = {
       remotes: {
         calender: "calender@http://localhost:9004/remoteEntry.js",
         home: "home@http://localhost:9001/remoteEntry.js",
-        pdp: "pdp@http://localhost:9002/remoteEntry.js",
+        cart: "cart@http://localhost:9003/remoteEntry.js",
       },
       exposes: {},
       shared: {
