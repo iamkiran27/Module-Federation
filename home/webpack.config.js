@@ -43,8 +43,10 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "home",
       filename: "remoteEntry.js",
-      remotes: {},
-      exposes: { "./home": "./src/bootstrap.js" },
+      remotes: {
+        pdp: "pdp@http://localhost:9002/remoteEntry.js",
+      },
+      exposes: { "./home": "./src/bootstrap" },
       shared: {
         ...deps,
         react: {

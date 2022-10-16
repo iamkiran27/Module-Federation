@@ -8,6 +8,8 @@ import { Observable } from "windowed-observable";
 import { navigateToUrl } from "single-spa";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import { Link } from "react-router-dom";
+
 const Container = () => {
   const [notification, setNotification] = useState(
     localStorage.getItem("cart") == null
@@ -34,17 +36,18 @@ const Container = () => {
         paddingX: "0",
       }}
     >
-      <a href="/" onClick={navigateToUrl} style={{ textDecoration: "none" }}>
+      <Link to="/" style={{ textDecoration: "none" }}>
         <Box
-          onClick={() => setLocation("/")}
           sx={{
-            borderBottom: location == "/" && "1px solid white",
+            borderBottom: "1px solid white",
             marginLeft: "20px",
           }}
         >
-          <Typography sx={{ color: "white" }}>Home</Typography>
+          <Typography sx={{ color: "white", textDecoration: "none" }}>
+            Home
+          </Typography>
         </Box>
-      </a>
+      </Link>
 
       <Box sx={{ marginLeft: "auto" }}>
         <Box
@@ -55,27 +58,31 @@ const Container = () => {
             justifyContent: "space-around",
           }}
         >
-          <a
-            href={`/calender`}
-            onClick={navigateToUrl}
+          <Link
+            to="/calender"
             style={{
               textDecoration: "none",
             }}
           >
             <CalendarTodayIcon sx={{ color: "white" }} />
-          </a>
-
+          </Link>
           <Badge badgeContent={notification} color="primary">
-            <a
+            <Link
+              to="/cart"
+              style={{
+                textDecoration: "none",
+              }}
+            >
+              {/* <a
               href={`/cart`}
               onClick={navigateToUrl}
               style={{
                 textDecoration: "none",
-                // color: "black",
               }}
-            >
+            > */}
               <ShoppingCartIcon sx={{ color: "white" }} />
-            </a>
+              {/* </a> */}
+            </Link>
           </Badge>
           <Avatar sx={{ bgcolor: "#03abab" }}>A</Avatar>
         </Box>

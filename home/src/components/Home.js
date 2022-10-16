@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 // import { navigateToUrl } from "single-spa";
 import ReactDOM from "react-dom";
 import { Observable } from "windowed-observable";
+import { Link } from "react-router-dom";
 import {
   Box,
   Card,
@@ -43,6 +44,7 @@ const Home = () => {
   }, []);
 
   return (
+    // <Link to="/" style={{ textDecoration: "none" }}>
     <Box sx={{ margin: "20px", marginTop: 10 }}>
       <Box sx={{ height: "500px" }}>
         <img src={items[index]} height="100%" width="100%"></img>
@@ -83,26 +85,34 @@ const Home = () => {
                       }}
                     >
                       <Box>
-                        <Typography
-                          variant="h6"
-                          sx={{
-                            fontWeight: "bold",
-                            "&:hover": {
-                              textDecoration: "underline",
-                            },
+                        <Link
+                          to={`/pdp/${d.id}`}
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
                           }}
                         >
-                          <a
+                          <Typography
+                            variant="h6"
+                            sx={{
+                              fontWeight: "bold",
+                              "&:hover": {
+                                textDecoration: "underline",
+                              },
+                            }}
+                          >
+                            {/* <a
                             href={`/pdp/${d.id}`}
-                            // onClick={navigateToUrl}
                             style={{
                               textDecoration: "none",
                               color: "black",
                             }}
-                          >
+                          > */}
+
                             {d.name}
-                          </a>
-                        </Typography>
+                            {/* </a> */}
+                          </Typography>
+                        </Link>
                       </Box>
 
                       <Box sx={{ marginTop: "3px" }}>
@@ -128,6 +138,7 @@ const Home = () => {
         })}
       </Grid>
     </Box>
+    // </Link>
   );
 };
 export default Home;
